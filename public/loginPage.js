@@ -1,12 +1,28 @@
 "use strict";
 
-const objectUse = new UserForm();
+const userForm = new UserForm();
 
-objectUse.loginFormCallback = (data) => {
-  // ApiConnector.login.loginFormCallback();
-  ApiConnector.login({ data }, loginFormCallback());
+// Авторизация
+
+userForm.loginFormCallback = (data) => {
+	ApiConnector.login(data, (response) => {
+		if (response.success == true) {
+			location.reload();
+		} else {
+			userForm.setLoginErrorMessage('Неправильный логин или пароль!');
+		}
+	});
 };
 
-// objectUse("test");
 
-console.log(objectUse);
+// Регистрация
+
+userForm.registerFormCallback = (data) => {
+	ApiConnector.register(data, (response) => {
+		if (response.success == true) {
+			location.reload();
+		} else {
+			userForm.setLoginErrorMessage('Неправильный формат логина или пароля');
+		}
+	});
+};
