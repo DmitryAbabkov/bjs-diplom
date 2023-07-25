@@ -49,7 +49,7 @@ moneyManager.addMoneyCallback = function(data) {
 			ProfileWidget.showProfile(response.data);
 			moneyManager.setMessage(true, 'Баланс успешно пополнен');
 		} else {
-			moneyManager.setMessage(false, 'Ошибка! Одно из полей не заполнено');
+			moneyManager.setMessage(false, response.error);
 		}
 	});
 };
@@ -62,7 +62,7 @@ moneyManager.conversionMoneyCallback = function(data) {
 			ProfileWidget.showProfile(response.data);
 			moneyManager.setMessage(true, 'Конвертация прошла успешно');
 		} else {
-			moneyManager.setMessage(false, 'Ошибка! Одно из полей не заполнено');
+			moneyManager.setMessage(false, response.error);
 		}
 	});
 };
@@ -75,7 +75,7 @@ moneyManager.sendMoneyCallback = function(data) {
 			ProfileWidget.showProfile(response.data);
 			moneyManager.setMessage(true, 'Перевод прошел успешно');
 		} else {
-			moneyManager.setMessage(false, 'Ошибка! Одно из полей не заполнено');
+			moneyManager.setMessage(false, response.error);
 		}
 	});
 };
@@ -100,7 +100,7 @@ favoriteWidget.addUserCallback = function(data) {
 			moneyManager.updateUsersList(response.data);
 			favoriteWidget.setMessage(true, 'Пользователь добавлен');
 		} else {
-			favoriteWidget.setMessage(false, 'Заполнены не все поля');
+			favoriteWidget.setMessage(false, response.error);
 		}
 	});
 }
@@ -114,7 +114,7 @@ favoriteWidget.removeUserCallback = function(data) {
 			moneyManager.updateUsersList(response.data);
 			favoriteWidget.setMessage(true, 'Пользователь удален');
 		} else {
-			favoriteWidget.setMessage(false, 'Пользователь не удален');
+			favoriteWidget.setMessage(false, response.error);
 		}
 	});
 };

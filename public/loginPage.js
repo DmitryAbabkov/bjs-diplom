@@ -9,7 +9,7 @@ userForm.loginFormCallback = (data) => {
 		if (response.success == true) {
 			location.reload();
 		} else {
-			userForm.setLoginErrorMessage('Неправильный логин или пароль!');
+			userForm.setLoginErrorMessage(response.error);
 		}
 	});
 };
@@ -22,7 +22,7 @@ userForm.registerFormCallback = (data) => {
 		if (response.success == true) {
 			location.reload();
 		} else {
-			userForm.setLoginErrorMessage('Неправильный формат логина или пароля');
+			userForm.setRegisterErrorMessage(response.error);
 		}
 	});
 };
